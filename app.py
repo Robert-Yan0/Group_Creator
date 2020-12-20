@@ -7,9 +7,31 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
+def createObject(groupNames,groupPeople,groupsNumber):
+    group = groups()
+    numberOfGroups = str(groupsNumber)          #GroupsNumber is the number of group already created, not the number of groups in total
+    group.namesOfGroup += "Group " + numberOfGroups + "\n"      
+    for i in groupNames:
+        if i == groupPeople: #group people is the number of people per group
+            break
+        group.namesOfGroup += groupNames[i]
+        groupNames.remove(i)
+        
+
+class groups:
+    pass
+
 def parseGroup(groupNames, groupNumber, groupPeople):
-    finalGroup = "Names:\n" + groupNames + "\n" + "Number of Groups:\n" + groupNumber + "\n" + "Number of people in a group:\n" + groupPeople
-    return finalGroup
+    groupsNumber = 0
+    groupNameList = groupNames.split()
+    finalGroup = ""
+    if len(groupNameList) < (groupNumber * groupPeople):
+        return "Error, number of groups or number of people too large"
+    while numOfGroups != groupNumber:
+        groupsNumber += 1
+        finalGroup += createObject(groupNameList,groupPeople,groupsNumber)
+    #finalGroup = "Names:" + groupNames + "Number of Groups:" + groupNumber + "Number of people in a group:" + groupPeople
+    #return finalGroup
 
 @app.route('/', methods=['POST'])
 def printNames():
