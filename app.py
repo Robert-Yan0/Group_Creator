@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request
-#I have no idea what i'm doing
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -7,29 +7,34 @@ app = Flask(__name__)
 def home():
     return render_template('home.html')
 
-def createObject(groupNames,groupPeople,groupsNumber):
-    numberOfGroups = str(groupsNumber)          #GroupsNumber is the number of group already created, not the number of groups in total
-    namesOfGroup += "Group " + numberOfGroups + "\n"      
-    for i in groupNames:
-        if i == groupPeople: #group people is the number of people per group
-            break
-        namesOfGroup += groupNames[i]
-        groupNames.remove(i)
+#This is a version of the code where I have not included group sorting yet
+#The code commented out is the code that is supposed to sort the groups but doesn't work
 
-    return namesOfGroup
+
+#def createGroup(groupNames,groupPeople,groupsNumber):          #GroupsNumber is the number of group already created, not the number of groups in total
+#    namesOfGroup = namesOfGroup + "Group " + str(groupsNumber) + "\n"      
+#    for i in groupNames:
+#        if i == groupPeople: #group people is the number of people per group
+#            break
+#        namesOfGroup += groupNames[i]
+#        groupNames.remove(i)
+
+#    return namesOfGroup
         
 
 def parseGroup(groupNames, groupNumber, groupPeople):
-    groupsNumber = 0
-    groupNameList = groupNames.split()
-    finalGroup = ""
-    if len(groupNameList) < (groupNumber * groupPeople):
-        return "Error, number of groups or number of people too large"
-    while numOfGroups != groupNumber:
-        groupsNumber += 1
-        finalGroup += createObject(groupNameList,groupPeople,groupsNumber)
-    #finalGroup = "Names:" + groupNames + "Number of Groups:" + groupNumber + "Number of people in a group:" + groupPeople
-    #return finalGroup
+    return "Names:\n" + groupNames + "\n" + "Number of groups:\n" + groupNumber + "\n" + "Number of people in a group: \n" + groupPeople
+#    numberOfGroups = 0
+#    groupNameList = groupNames.split()
+#    finalGroup = ""
+#    numOfNames = len(groupNameList)
+#    if numOfNames < (groupNumber * groupPeople):
+#        return "Error, number of groups or number of people too large"
+#
+#    while numberOfGroups < groupNumber:
+#        numberOfGroups += 1
+#        finalGroup += createGroup(groupNameList,groupPeople,groupsNumber)
+#    return finalGroup
 
 @app.route('/', methods=['POST'])
 def printNames():
