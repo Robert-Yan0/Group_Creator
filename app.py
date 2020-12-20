@@ -8,18 +8,16 @@ def home():
     return render_template('home.html')
 
 def createObject(groupNames,groupPeople,groupsNumber):
-    group = groups()
     numberOfGroups = str(groupsNumber)          #GroupsNumber is the number of group already created, not the number of groups in total
-    group.namesOfGroup += "Group " + numberOfGroups + "\n"      
+    namesOfGroup += "Group " + numberOfGroups + "\n"      
     for i in groupNames:
         if i == groupPeople: #group people is the number of people per group
             break
-        group.namesOfGroup += groupNames[i]
+        namesOfGroup += groupNames[i]
         groupNames.remove(i)
-        
 
-class groups:
-    pass
+    return namesOfGroup
+        
 
 def parseGroup(groupNames, groupNumber, groupPeople):
     groupsNumber = 0
