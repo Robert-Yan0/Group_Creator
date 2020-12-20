@@ -1,0 +1,22 @@
+trigger_words = ["idiot", "stupid", "drugs","F***", "ill", "n*** photo, look weird"]
+
+message = "F*** you"
+words = message.split()
+print(words)
+
+for i in range(len(trigger_words)):
+
+  for j in range(len(words)):
+
+    if trigger_words[i] == words[j]:
+
+      if i == 0 or i == 1:
+
+        if words[j-1] == 'not':
+          print('This is not a Cyberbullying case.')
+
+        else:
+          print('This is a cyber bullying case. Take an action.')
+    
+      else:
+        print('This is a cyber bullying case. Take an action.')
